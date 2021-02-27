@@ -1,11 +1,11 @@
 {
-  "name": "repale-with-the-name-of-your-service",
+  "name": "related",
   "version": "1.0.0",
   "description": "",
   "main": "server/index.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
+    "build": "webpack --watch",
     "start": "nodemon ./server/index.js"
   },
   "author": "RBK Tunisia",
@@ -19,6 +19,7 @@
     "express": "^4.16.2",
     "jest": "^22.3.0",
     "morgan": "^1.9.0",
+    "nodemon": "^2.0.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack": "^3.11.0"

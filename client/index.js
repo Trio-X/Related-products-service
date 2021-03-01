@@ -1,3 +1,5 @@
-import NameOfTheService from './components/NameOfTheService.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Related from './components/Related.jsx';
 
-window.NameOfTheService = NameOfTheService;
+ReactDOM.render(<Related/>, document.getElementById('related'))

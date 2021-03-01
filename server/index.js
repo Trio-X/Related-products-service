@@ -1,8 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+require('dotenv').config()
 const app = express();
-const port = process.env.PORT || 3003;
+const port = process.env.PORT;
 const axios = require('axios')
 
 
@@ -13,7 +14,7 @@ app.get("/api/products/:product_id", async (req, res) => {
   var data = [];
   await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${req.params.product_id}/related`, {
     headers: {
-      Authorization: "4e0f12d22dd812dfa4c3d11d88465083830276e5",
+      Authorization: process.env.TOKEN,
     },
     _id: req.params.product_id
   })
@@ -23,14 +24,14 @@ app.get("/api/products/:product_id", async (req, res) => {
       for (var i = 0; i < related.data.length; i++) {
         await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${related.data[i]}`, {
           headers: {
-            Authorization: "4e0f12d22dd812dfa4c3d11d88465083830276e5"
+            Authorization: process.env.TOKEN
           }
         })
           .then(product => data.push(product.data))
           .catch(err => console.log(err))
         await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${related.data[i]}/styles`, {
           headers: {
-            Authorization: "a1e8950a9d8167991fdded95527d06ae0af76d54",
+            Authorization: process.env.TOKEN,
           }
         }
         )

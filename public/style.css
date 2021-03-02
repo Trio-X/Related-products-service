@@ -68,3 +68,22 @@
   .card-star-rating {
     margin: 8px;
   }
+
+/***** Comparison Modal CSS *****/
+
+h4 {
+  margin-left: 15px
+}
+
+table {
+  width: 500px;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+}
+
+td:first-child {
+  text-align: center;
+}

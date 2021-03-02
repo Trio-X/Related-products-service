@@ -23,6 +23,7 @@ app.get("/api/products/:product_id", async (req, res) => {
       // console.log(related.data);
 
       for (var i = 0; i < related.data.length; i++) {
+
         await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${related.data[i]}`, {
           headers: {
             Authorization: process.env.TOKEN
@@ -30,6 +31,7 @@ app.get("/api/products/:product_id", async (req, res) => {
         })
           .then(product => data.push(product.data))
           .catch(err => console.log(err))
+
         await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${related.data[i]}/styles`, {
           headers: {
             Authorization: process.env.TOKEN,
@@ -50,19 +52,33 @@ app.get("/api/products/:product_id", async (req, res) => {
   res.send(data)
 })
 
-// GET Request for the reviews // Still working on it.
-app.get('/reviews/:id', (req, res) => {  
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews?product_id=11048`, {
+// GET Request for the related products ratings and reviews.
+app.get("/reviews/:product_id", async (req, res) => {
+  var data = [];
+  await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${req.params.product_id}/related`, {
     headers: {
       Authorization: process.env.TOKEN,
     },
     _id: req.params.product_id
-  }).then(({ data }) => {
-    res.send(data.results.map(elem => {
-      return elem.rating
-    }))
-  }).catch(err => res.send(err))
+  })
+    .then(async (related) => {
+      console.log(related.data);
 
+      for (var i = 0; i < related.data.length; i++) {
+        await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews?product_id=${related.data[i]}`, {
+          headers: {
+            Authorization: process.env.TOKEN,
+          }
+        })
+          .then(ids => data.push(ids.data))
+          .catch(err => res.send(err))
+      }
+    })
+    .catch(err => console.log(err))
+  // console.log(data);
+  res.send(data.map(elem => {
+    return elem
+  }))
 })
 
 app.listen(port, () => {

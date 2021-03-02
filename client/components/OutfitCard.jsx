@@ -1,21 +1,22 @@
 import React from "react";
 import StarRatings from 'react-star-ratings';
 
-const OutfitCard = ({ element }) => {
+const OutfitCard = () => {
 
     return (
-        <div className="card-product"> // This DIV will hold 1 of the Outfit cards.
+        // This DIV will hold 1 of the Outfit cards.
+        <div className="card-product">
 
             <div>
-            <span className="far fa-times-circle card-x-top"></span>
-                <img className="card-image" src={element.url.url}></img>
+                <span className="far fa-times-circle card-x-top"></span>
+                <img className="card-image">Insert Image</img>
             </div>
 
-            <div className="card-category">{element.category}</div>
-            <div className="card-title">{element.name}</div>
-            <span className="card-price">${element.default_price}</span> <br /><br />
-
-            <div className='card-star-rating'> // React star rating
+            <div className="card-category">Category</div>
+            <div className="card-title">Product Name</div>
+            <span className="card-price">Price</span> <br /><br />
+            {/* React star rating */}
+            <div className='card-star-rating'>
                 <StarRatings
                     rating={0}
                     name='rating'

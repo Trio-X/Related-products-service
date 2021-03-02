@@ -1,0 +1,70 @@
+  body {
+      margin: 50px;
+      font-family: 'Noto Sans JP';
+  }
+
+  h1 {
+    text-transform: uppercase;
+    margin-left: 72px;
+    color: rgb(94, 87, 87);
+  }
+
+/***** Product Card CSS *****/
+
+  .card-product {
+    width: 90%;
+    border: 1px solid;
+    border-color: rgb(94, 87, 87);
+    cursor: pointer;
+  }
+
+  .card-star-top {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 210px;
+    color: white;
+  }
+
+  .card-x-top {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 210px;
+    color: white;
+  }
+
+  .card-star-top:hover {
+    color: orange;
+  }
+
+  .card-x-top:hover {
+    color: red;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .card-category {
+    font-size: 14px;
+    margin: 8px;
+    text-transform: uppercase;
+    color: rgb(94, 87, 87);
+  }
+
+  .card-title {
+    font-size: 20px;
+    margin: 8px;
+    font-weight: bold;
+  }
+
+  .card-price {
+    font-size: 15px;
+    margin: 8px;
+    color: rgb(94, 87, 87);
+  }
+
+  .card-star-rating {
+    margin: 8px;
+  }

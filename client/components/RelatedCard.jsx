@@ -1,10 +1,10 @@
 import React from "react";
 import StarRatings from 'react-star-ratings';
 
-const RelatedCard = ({ element }) => {
+const RelatedCard = ({ element, rate }) => {
 
     return (
-        // This DIV will hold 1 of the Related products cards.
+        // This DIV will hold 1 of the products cards.
         <div className="card-product">
 
             <div>
@@ -16,9 +16,10 @@ const RelatedCard = ({ element }) => {
             <div className="card-title">{element.name}</div>
             <span className="card-price">${element.default_price}</span> <br /><br />
             {/* React star rating */}
-            <div className='card-star-rating'>
+            <div className='card-star-rating' >
                 <StarRatings
-                    rating={0}
+                    // /5 to get the average
+                    rating={(rate / 5)}
                     name='rating'
                     starDimension="25px"
                     starSpacing="1px"
@@ -26,9 +27,8 @@ const RelatedCard = ({ element }) => {
                     numberOfStars={5}
                 />
             </div>
-
         </div>
     )
-};
+}
 
 export default RelatedCard;

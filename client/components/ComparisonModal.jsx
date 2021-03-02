@@ -5,14 +5,15 @@ const customStyles = {
     content: {
         top: '50%',
         left: '50%',
-        right: 'auto',
-        bottom: 'auto',
+        right: 'auto',             // Default parameters of the React Modal.
+        bottom: 'auto',            // Changing them would change the position of the pop-up.                
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)'
     }
 };
 
 export default function ComparisonModal() {
+    // React Modal
     var subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
     function openModal() {
@@ -20,7 +21,6 @@ export default function ComparisonModal() {
     }
 
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
         subtitle.style.color = 'grey';
     }
 
@@ -41,7 +41,8 @@ export default function ComparisonModal() {
 
                 <h4 ref={_subtitle => (subtitle = _subtitle)}>Comparing</h4>
 
-                <table>
+                {/* Comparison Table */}
+                <table> 
                     <tr>
                         <th>Product Short Name</th>
                         <th></th>

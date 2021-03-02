@@ -6,7 +6,7 @@
 
   - https://github.com/organizationName/repo
   - https://github.com/organizationName/repo
-  - https://github.com/organizationName/repo
+  - https://github.com/Trio-X/Related-products-service
   - https://github.com/organizationName/repo
 
 ## Table of Contents

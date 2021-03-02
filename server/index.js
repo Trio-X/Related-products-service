@@ -19,7 +19,7 @@ app.get("/api/products/:product_id", async (req, res) => {
     _id: req.params.product_id
   })
     .then(async (related) => {
-      console.log(related.data);
+      // console.log(related.data);
 
       for (var i = 0; i < related.data.length; i++) {
         await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${related.data[i]}`, {
@@ -36,8 +36,8 @@ app.get("/api/products/:product_id", async (req, res) => {
         }
         )
           .then(style => {
-            console.log(style);
-            console.log(style.data.results[0].photos[0])
+            // console.log(style);
+            // console.log(style.data.results[0].photos[0])
             if (style.data.results[0].photos) {
               data[i].url = style.data.results[0].photos[0]
             }
@@ -45,8 +45,22 @@ app.get("/api/products/:product_id", async (req, res) => {
       }
     })
     .catch(err => console.log(err))
-  console.log(data);
+  // console.log(data);
   res.send(data)
+})
+
+app.get('/reviews/:id', (req, res) => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews?product_id=11048`, {
+    headers: {
+      Authorization: process.env.TOKEN,
+    },
+    _id: req.params.product_id
+  }).then(({ data }) => {
+    res.send(data.results.map(elem => {
+      return elem.rating
+    }))
+  }).catch(err => res.send(err))
+
 })
 
 app.listen(port, () => {

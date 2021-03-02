@@ -9,12 +9,12 @@ export default class Related extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: [],
-      reviews: {}
+      data: [],  // The related products.
+      reviews: {} // The reviews // Still working on it.
     };
   };
 
-  products() {
+  products() {  // Retrieving the data of a product.
     axios
       .get(`/api/products/11048`)
       .then((response) => {
@@ -28,7 +28,7 @@ export default class Related extends React.Component {
       });
   };
 
-  reviews() {
+  reviews() { // Retrieving the reviews of a product // Still working on it.
     axios
       .get(`/reviews/11048`)
       .then(({ data }) => {
@@ -46,13 +46,14 @@ export default class Related extends React.Component {
   };
 
   render() {
-    const breakPoints = [{ width: 1, itemsToShow: 4 }];
+    // To control how many cards would appear before clicking on the next arrow.
+    const breakPoints = [{ width: 1, itemsToShow: 4 }]; 
 
     return (
       <div>
         <div>
           <h1>RELATED PRODUCTS</h1>
-          <Carousel breakPoints={breakPoints}>
+          <Carousel breakPoints={breakPoints}> // React Carousel for the Related products list.
             {this.state.data.map((element, index) => {
               return <RelatedCard element={element} key={index} reviews={this.state.reviews} />
             })}
@@ -60,7 +61,7 @@ export default class Related extends React.Component {
         </div>
         <div>
           <h1>YOUR OUTFIT</h1>
-          <Carousel breakPoints={breakPoints}>
+          <Carousel breakPoints={breakPoints}> // React Carousel for the outfits list.
             {this.state.data.map((element, index) => {
               return <OutfitCard element={element} key={index} />
             })}

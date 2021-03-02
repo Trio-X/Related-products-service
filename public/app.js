@@ -30223,8 +30223,8 @@ var Related = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Related.__proto__ || Object.getPrototypeOf(Related)).call(this));
 
     _this.state = {
-      data: [],
-      reviews: {}
+      data: [], // The related products.
+      reviews: {} // The reviews // Still working on it.
     };
     return _this;
   }
@@ -30234,6 +30234,7 @@ var Related = function (_React$Component) {
     value: function products() {
       var _this2 = this;
 
+      // Retrieving the data of a product.
       _axios2.default.get('/api/products/11048').then(function (response) {
         _this2.setState({
           data: response.data
@@ -30248,6 +30249,7 @@ var Related = function (_React$Component) {
     value: function reviews() {
       var _this3 = this;
 
+      // Retrieving the reviews of a product // Still working on it.
       _axios2.default.get('/reviews/11048').then(function (_ref) {
         var data = _ref.data;
 
@@ -30268,6 +30270,7 @@ var Related = function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
+      // To control how many cards would appear before clicking on the next arrow.
       var breakPoints = [{ width: 1, itemsToShow: 4 }];
 
       return _react2.default.createElement(
@@ -30284,6 +30287,7 @@ var Related = function (_React$Component) {
           _react2.default.createElement(
             _reactElasticCarousel2.default,
             { breakPoints: breakPoints },
+            ' // React Carousel for the Related products list.',
             this.state.data.map(function (element, index) {
               return _react2.default.createElement(_RelatedCard2.default, { element: element, key: index, reviews: _this4.state.reviews });
             })
@@ -30300,6 +30304,7 @@ var Related = function (_React$Component) {
           _react2.default.createElement(
             _reactElasticCarousel2.default,
             { breakPoints: breakPoints },
+            ' // React Carousel for the outfits list.',
             this.state.data.map(function (element, index) {
               return _react2.default.createElement(_OutfitCard2.default, { element: element, key: index });
             })
@@ -36789,6 +36794,7 @@ var RelatedCard = function RelatedCard(_ref) {
     return _react2.default.createElement(
         "div",
         { className: "card-product" },
+        " // This DIV will hold 1 of the Outfit cards.",
         _react2.default.createElement(
             "div",
             null,
@@ -36817,6 +36823,7 @@ var RelatedCard = function RelatedCard(_ref) {
         _react2.default.createElement(
             "div",
             { className: "card-star-rating" },
+            " // React star rating",
             _react2.default.createElement(_reactStarRatings2.default, {
                 rating: 0,
                 name: "rating",
@@ -37322,6 +37329,7 @@ var OutfitCard = function OutfitCard(_ref) {
     return _react2.default.createElement(
         "div",
         { className: "card-product" },
+        " // This DIV will hold 1 of the Outfit cards.",
         _react2.default.createElement(
             "div",
             null,
@@ -37350,6 +37358,7 @@ var OutfitCard = function OutfitCard(_ref) {
         _react2.default.createElement(
             "div",
             { className: "card-star-rating" },
+            " // React star rating",
             _react2.default.createElement(_reactStarRatings2.default, {
                 rating: 0,
                 name: "rating",

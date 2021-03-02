@@ -4,7 +4,7 @@ import StarRatings from 'react-star-ratings';
 const RelatedCard = ({ element }) => {
 
     return (
-        <div className="card-product">
+        <div className="card-product"> // This DIV will hold 1 of the Outfit cards.
 
             <div>
                 <span className="far fa-star card-star-top"></span>
@@ -15,7 +15,7 @@ const RelatedCard = ({ element }) => {
             <div className="card-title">{element.name}</div>
             <span className="card-price">${element.default_price}</span> <br /><br />
 
-            <div className='card-star-rating'>
+            <div className='card-star-rating'> // React star rating
                 <StarRatings
                     rating={0}
                     name='rating'

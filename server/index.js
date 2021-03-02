@@ -10,6 +10,7 @@ const axios = require('axios')
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
+// GET Request for the related products. 
 app.get("/api/products/:product_id", async (req, res) => {
   var data = [];
   await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${req.params.product_id}/related`, {
@@ -49,7 +50,8 @@ app.get("/api/products/:product_id", async (req, res) => {
   res.send(data)
 })
 
-app.get('/reviews/:id', (req, res) => {
+// GET Request for the reviews // Still working on it.
+app.get('/reviews/:id', (req, res) => {  
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews?product_id=11048`, {
     headers: {
       Authorization: process.env.TOKEN,

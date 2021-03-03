@@ -59,7 +59,7 @@ export default class Related extends React.Component {
         ratings = 0
         counter = 0
       }
-      el.results.map((elem, i) => {
+      el.results.map((elem) => {
         ratings += elem.rating
         counter += 1
         if (counter === 5) {
@@ -82,6 +82,16 @@ export default class Related extends React.Component {
           </Carousel>
         </div>
         <ComparisonModal />
+        <div>
+          <h1>YOUR OUTFITS</h1>
+          {/* React Carousel */}
+          <Carousel breakPoints={breakPoints}>           
+            <OutfitCard/>
+            <OutfitCard/>
+            <OutfitCard/>
+            <OutfitCard/>
+          </Carousel>
+        </div>
       </div>
     )
   }

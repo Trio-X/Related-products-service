@@ -2,7 +2,6 @@ import React from "react";
 import StarRatings from 'react-star-ratings';
 
 const RelatedCard = ({ element, rate }) => {
-
     return (
         // This DIV will hold 1 of the products cards.
         <div className="card-product">
@@ -19,7 +18,7 @@ const RelatedCard = ({ element, rate }) => {
             <div className='card-star-rating' >
                 <StarRatings
                     // /5 to get the average
-                    rating={(rate / 5)}
+                    rating={(rate/5)}
                     name='rating'
                     starDimension="25px"
                     starSpacing="1px"

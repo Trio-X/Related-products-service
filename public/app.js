@@ -30518,7 +30518,7 @@ var Related = function (_React$Component) {
           ratings = 0;
           counter = 0;
         }
-        el.results.map(function (elem, i) {
+        el.results.map(function (elem) {
           ratings += elem.rating;
           counter += 1;
           if (counter === 5) {
@@ -30548,7 +30548,24 @@ var Related = function (_React$Component) {
             })
           )
         ),
-        _react2.default.createElement(_ComparisonModal2.default, null)
+        _react2.default.createElement(_ComparisonModal2.default, null),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'h1',
+            null,
+            'YOUR OUTFITS'
+          ),
+          _react2.default.createElement(
+            _reactElasticCarousel2.default,
+            { breakPoints: breakPoints },
+            _react2.default.createElement(_OutfitCard2.default, null),
+            _react2.default.createElement(_OutfitCard2.default, null),
+            _react2.default.createElement(_OutfitCard2.default, null),
+            _react2.default.createElement(_OutfitCard2.default, null)
+          )
+        )
       );
     }
   }]);
@@ -37030,7 +37047,6 @@ var RelatedCard = function RelatedCard(_ref) {
     var element = _ref.element,
         rate = _ref.rate;
 
-
     return (
         // This DIV will hold 1 of the products cards.
         _react2.default.createElement(
@@ -37575,11 +37591,7 @@ var OutfitCard = function OutfitCard() {
                 "div",
                 null,
                 _react2.default.createElement("span", { className: "far fa-times-circle card-x-top" }),
-                _react2.default.createElement(
-                    "img",
-                    { className: "card-image" },
-                    "Insert Image"
-                )
+                _react2.default.createElement("img", { className: "card-image", src: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Plus_symbol.svg" })
             ),
             _react2.default.createElement(
                 "div",
@@ -37707,13 +37719,13 @@ function ComparisonModal() {
                     _react2.default.createElement(
                         'th',
                         null,
-                        'Product Short Name'
+                        'First Product'
                     ),
                     _react2.default.createElement('th', null),
                     _react2.default.createElement(
                         'th',
                         null,
-                        'Product Short Name'
+                        'Second Product'
                     )
                 ),
                 _react2.default.createElement(
@@ -37727,12 +37739,12 @@ function ComparisonModal() {
                     _react2.default.createElement(
                         'td',
                         null,
-                        'Feature'
+                        'Size'
                     ),
                     _react2.default.createElement(
                         'td',
                         null,
-                        _react2.default.createElement('i', { 'class': 'fa fa-check' })
+                        _react2.default.createElement('i', { 'class': '' })
                     )
                 ),
                 _react2.default.createElement(
@@ -37746,26 +37758,7 @@ function ComparisonModal() {
                     _react2.default.createElement(
                         'td',
                         null,
-                        'Feature'
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                    )
-                ),
-                _react2.default.createElement(
-                    'tr',
-                    null,
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                    ),
-                    _react2.default.createElement(
-                        'td',
-                        null,
-                        'Feature'
+                        'Quantity'
                     ),
                     _react2.default.createElement(
                         'td',
@@ -37784,12 +37777,12 @@ function ComparisonModal() {
                     _react2.default.createElement(
                         'td',
                         null,
-                        'Feature'
+                        'Colors'
                     ),
                     _react2.default.createElement(
                         'td',
                         null,
-                        _react2.default.createElement('i', { 'class': 'fa fa-check' })
+                        _react2.default.createElement('i', { 'class': '' })
                     )
                 ),
                 _react2.default.createElement(
@@ -37803,7 +37796,26 @@ function ComparisonModal() {
                     _react2.default.createElement(
                         'td',
                         null,
-                        'Feature'
+                        'Feature X'
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        _react2.default.createElement('i', { 'class': 'fa fa-check' })
+                    )
+                ),
+                _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        _react2.default.createElement('i', { 'class': '' })
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        'Feature Y'
                     ),
                     _react2.default.createElement(
                         'td',

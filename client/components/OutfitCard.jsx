@@ -9,7 +9,7 @@ const OutfitCard = () => {
 
             <div>
                 <span className="far fa-times-circle card-x-top"></span>
-                <img className="card-image">Insert Image</img>
+                <img className="card-image" src='https://upload.wikimedia.org/wikipedia/commons/9/9e/Plus_symbol.svg'></img>
             </div>
 
             <div className="card-category">Category</div>

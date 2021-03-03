@@ -3,16 +3,16 @@ import Carousel from 'react-elastic-carousel';
 import axios from 'axios';
 import RelatedCard from "./RelatedCard.jsx";
 import OutfitCard from "./OutfitCard.jsx";
-import ComparisonModal from "./ComparisonModal.jsx";
-
 
 export default class Related extends React.Component {
   constructor() {
     super();
     this.state = {
       data: [],     // The related products.
-      rating: []    // All the ratings and reviews of the related products. 
+      rating: [] ,         // All the ratings and reviews of the related products. 
+      modal:false
     };
+    this.clicked=this.clicked.bind(this);
   };
 
   products() {     // Fetching the related products.
@@ -40,6 +40,12 @@ export default class Related extends React.Component {
         console.log(error);
       });
   };
+  
+  clicked(e,callback){
+    e.preventDefault();
+    this.setState({modal:callback})
+    console.log('clicked');
+  }
 
   componentDidMount() {
     this.products()
@@ -77,12 +83,10 @@ export default class Related extends React.Component {
           {/* React Carousel */}
           <Carousel breakPoints={breakPoints}>           
             {this.state.data.map((element, index) => {
-              return <RelatedCard element={element} key={index} rate={result[index]} />
+              return <RelatedCard element={element} key={index} rate={result[index]} clicked={this.clicked} />
             })}
           </Carousel>
-        </div>
-        <ComparisonModal />
-        <div>
+        
           <h1>YOUR OUTFITS</h1>
           {/* React Carousel */}
           <Carousel breakPoints={breakPoints}>           

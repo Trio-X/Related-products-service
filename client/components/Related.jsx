@@ -18,7 +18,7 @@ export default class Related extends React.Component {
   products() {
     // Fetching the related products.
     axios
-      .get(`http://localhost:3003/related/api/products/11048`)
+      .get(`http://164.90.174.150:3003/related/api/products/11048`)
       .then((response) => {
         this.setState({
           data: response.data,
@@ -32,7 +32,7 @@ export default class Related extends React.Component {
   reviews() {
     // Fetching the ratings and reviews of the related products.
     axios
-      .get(`http://localhost:3003/related/reviews/11048`)
+      .get(`http://164.90.174.150:3003/related/reviews/11048`)
       .then((response) => {
         this.setState({
           rating: response.data,

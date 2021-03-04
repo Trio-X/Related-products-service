@@ -890,7 +890,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.canUseDOM = undefined;
 
-var _exenv = __webpack_require__(83);
+var _exenv = __webpack_require__(81);
 
 var _exenv2 = _interopRequireDefault(_exenv);
 
@@ -1706,7 +1706,7 @@ exports.show = show;
 exports.documentNotReadyOrSSRTesting = documentNotReadyOrSSRTesting;
 exports.resetForTesting = resetForTesting;
 
-var _warning = __webpack_require__(82);
+var _warning = __webpack_require__(80);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -1851,7 +1851,7 @@ var _Related2 = _interopRequireDefault(_Related);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_Related2.default, null), document.getElementById('related'));
+_reactDom2.default.render(_react2.default.createElement(_Related2.default, null), document.getElementById("service2"));
 
 /***/ }),
 /* 26 */
@@ -30436,7 +30436,7 @@ var _RelatedCard = __webpack_require__(72);
 
 var _RelatedCard2 = _interopRequireDefault(_RelatedCard);
 
-var _OutfitCard = __webpack_require__(75);
+var _OutfitCard = __webpack_require__(85);
 
 var _OutfitCard2 = _interopRequireDefault(_OutfitCard);
 
@@ -30458,7 +30458,7 @@ var Related = function (_React$Component) {
 
     _this.state = {
       data: [], // The related products.
-      rating: [], // All the ratings and reviews of the related products. 
+      rating: [], // All the ratings and reviews of the related products.
       modal: false
     };
     _this.clicked = _this.clicked.bind(_this);
@@ -30466,12 +30466,12 @@ var Related = function (_React$Component) {
   }
 
   _createClass(Related, [{
-    key: 'products',
+    key: "products",
     value: function products() {
       var _this2 = this;
 
       // Fetching the related products.
-      _axios2.default.get('/api/products/11048').then(function (response) {
+      _axios2.default.get("http://localhost:3003/related/api/products/11048").then(function (response) {
         _this2.setState({
           data: response.data
         });
@@ -30480,12 +30480,12 @@ var Related = function (_React$Component) {
       });
     }
   }, {
-    key: 'reviews',
+    key: "reviews",
     value: function reviews() {
       var _this3 = this;
 
       // Fetching the ratings and reviews of the related products.
-      _axios2.default.get('/reviews/11048').then(function (response) {
+      _axios2.default.get("http://localhost:3003/related/reviews/11048").then(function (response) {
         _this3.setState({
           rating: response.data
         });
@@ -30494,24 +30494,24 @@ var Related = function (_React$Component) {
       });
     }
   }, {
-    key: 'clicked',
+    key: "clicked",
     value: function clicked(e, callback) {
       e.preventDefault();
       this.setState({ modal: callback });
-      console.log('clicked');
+      console.log("clicked");
     }
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       this.products();
       this.reviews();
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this4 = this;
 
-      var breakPoints = [{ width: 1, itemsToShow: 4 }]; // It will control the number of cards showing up 
+      var breakPoints = [{ width: 1, itemsToShow: 4 }]; // It will control the number of cards showing up
       // in the carousel before hitting the next arrow.
       var result = [];
       var ratings = 0;
@@ -30519,7 +30519,7 @@ var Related = function (_React$Component) {
       this.state.rating.map(function (el) {
         // Getting the exact path to the star ratings
         if (el.results.length === 0) {
-          // and calculating the sum of the ratings.    
+          // and calculating the sum of the ratings.
           result.push(0);
           ratings = 0;
           counter = 0;
@@ -30536,27 +30536,32 @@ var Related = function (_React$Component) {
       });
 
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
         _react2.default.createElement(
-          'div',
+          "div",
           null,
           _react2.default.createElement(
-            'h1',
+            "h1",
             null,
-            'RELATED PRODUCTS'
+            "RELATED PRODUCTS"
           ),
           _react2.default.createElement(
             _reactElasticCarousel2.default,
             { breakPoints: breakPoints },
             this.state.data.map(function (element, index) {
-              return _react2.default.createElement(_RelatedCard2.default, { element: element, key: index, rate: result[index], clicked: _this4.clicked });
+              return _react2.default.createElement(_RelatedCard2.default, {
+                element: element,
+                key: index,
+                rate: result[index],
+                clicked: _this4.clicked
+              });
             })
           ),
           _react2.default.createElement(
-            'h1',
+            "h1",
             null,
-            'YOUR OUTFITS'
+            "YOUR OUTFITS"
           ),
           _react2.default.createElement(
             _reactElasticCarousel2.default,
@@ -30575,7 +30580,6 @@ var Related = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Related;
-;
 
 /***/ }),
 /* 36 */
@@ -37031,7 +37035,7 @@ module.exports = function isAxiosError(payload) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -37044,231 +37048,234 @@ var _reactStarRatings = __webpack_require__(21);
 
 var _reactStarRatings2 = _interopRequireDefault(_reactStarRatings);
 
-var _reactModal = __webpack_require__(77);
+var _reactModal = __webpack_require__(75);
 
 var _reactModal2 = _interopRequireDefault(_reactModal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RelatedCard = function RelatedCard(_ref) {
-    var element = _ref.element,
-        rate = _ref.rate,
-        clicked = _ref.clicked;
+  var element = _ref.element,
+      rate = _ref.rate,
+      clicked = _ref.clicked;
 
-    var customStyles = {
-        content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto', // Default parameters of the React Modal.
-            bottom: 'auto', // Changing them would change the position of the pop-up.                
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)'
-        }
-    };
-    var subtitle;
-
-    var _React$useState = _react2.default.useState(false),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        modalIsOpen = _React$useState2[0],
-        setIsOpen = _React$useState2[1];
-
-    function openModal() {
-        setIsOpen(true);
+  var customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto", // Default parameters of the React Modal.
+      bottom: "auto", // Changing them would change the position of the pop-up.
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)"
     }
-    module.exports.openModal = openModal;
-    function afterOpenModal() {
-        subtitle.style.color = 'grey';
-    }
+  };
+  var subtitle;
 
-    function closeModal() {
-        setIsOpen(false);
-    }
-    return (
-        // This DIV will hold 1 of the products cards.
+  var _React$useState = _react2.default.useState(false),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      modalIsOpen = _React$useState2[0],
+      setIsOpen = _React$useState2[1];
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  module.exports.openModal = openModal;
+  function afterOpenModal() {
+    subtitle.style.color = "grey";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+  return (
+    // This DIV will hold 1 of the products cards.
+    _react2.default.createElement(
+      "div",
+      { className: "card-product" },
+      _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement("span", {
+          className: "far fa-star card-star-top",
+          onClick: function onClick() {
+            return openModal();
+          }
+        }),
+        _react2.default.createElement("img", { className: "card-image", src: element.url.url })
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "card-category" },
+        element.category
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "card-title" },
+        element.name
+      ),
+      _react2.default.createElement(
+        "span",
+        { className: "card-price" },
+        "$",
+        element.default_price
+      ),
+      " ",
+      _react2.default.createElement("br", null),
+      _react2.default.createElement("br", null),
+      _react2.default.createElement(
+        "div",
+        { className: "card-star-rating" },
+        _react2.default.createElement(_reactStarRatings2.default
+        // /5 to get the average
+        , { rating: rate / 5,
+          name: "rating",
+          starDimension: "25px",
+          starSpacing: "1px",
+          starRatedColor: "orange",
+          numberOfStars: 5
+        })
+      ),
+      _react2.default.createElement(
+        "div",
+        null,
         _react2.default.createElement(
-            'div',
-            { className: 'card-product' },
+          "div",
+          null,
+          _react2.default.createElement(
+            _reactModal2.default,
+            {
+              isOpen: modalIsOpen,
+              onAfterOpen: afterOpenModal,
+              onRequestClose: closeModal,
+              style: customStyles,
+              contentLabel: "Comparison Modal"
+            },
             _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement('span', { className: 'far fa-star card-star-top', onClick: function onClick() {
-                        return openModal();
-                    } }),
-                _react2.default.createElement('img', { className: 'card-image', src: element.url.url })
+              "h4",
+              { ref: function ref(_subtitle) {
+                  return subtitle = _subtitle;
+                } },
+              "Comparing"
             ),
             _react2.default.createElement(
-                'div',
-                { className: 'card-category' },
-                element.category
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: 'card-title' },
-                element.name
-            ),
-            _react2.default.createElement(
-                'span',
-                { className: 'card-price' },
-                '$',
-                element.default_price
-            ),
-            ' ',
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(
-                'div',
-                { className: 'card-star-rating' },
-                _react2.default.createElement(_reactStarRatings2.default
-                // /5 to get the average
-                , { rating: rate / 5,
-                    name: 'rating',
-                    starDimension: '25px',
-                    starSpacing: '1px',
-                    starRatedColor: 'orange',
-                    numberOfStars: 5
-                })
-            ),
-            _react2.default.createElement(
-                'div',
+              "table",
+              null,
+              _react2.default.createElement(
+                "tr",
                 null,
                 _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        _reactModal2.default,
-                        {
-                            isOpen: modalIsOpen,
-                            onAfterOpen: afterOpenModal,
-                            onRequestClose: closeModal,
-                            style: customStyles,
-                            contentLabel: 'Comparison Modal'
-                        },
-                        _react2.default.createElement(
-                            'h4',
-                            { ref: function ref(_subtitle) {
-                                    return subtitle = _subtitle;
-                                } },
-                            'Comparing'
-                        ),
-                        _react2.default.createElement(
-                            'table',
-                            null,
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    'First Product'
-                                ),
-                                _react2.default.createElement('th', null),
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    'Second Product'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Size'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': '' })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Quantity'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Colors'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': '' })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Feature X'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'tr',
-                                null,
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': '' })
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    'Feature Y'
-                                ),
-                                _react2.default.createElement(
-                                    'td',
-                                    null,
-                                    _react2.default.createElement('i', { 'class': 'fa fa-check' })
-                                )
-                            )
-                        )
-                    )
+                  "th",
+                  null,
+                  "First Product"
+                ),
+                _react2.default.createElement("th", null),
+                _react2.default.createElement(
+                  "th",
+                  null,
+                  "Second Product"
                 )
+              ),
+              _react2.default.createElement(
+                "tr",
+                null,
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "fa fa-check" })
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  "Size"
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "" })
+                )
+              ),
+              _react2.default.createElement(
+                "tr",
+                null,
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "fa fa-check" })
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  "Quantity"
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "fa fa-check" })
+                )
+              ),
+              _react2.default.createElement(
+                "tr",
+                null,
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "fa fa-check" })
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  "Colors"
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "" })
+                )
+              ),
+              _react2.default.createElement(
+                "tr",
+                null,
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "fa fa-check" })
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  "Feature X"
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "fa fa-check" })
+                )
+              ),
+              _react2.default.createElement(
+                "tr",
+                null,
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "" })
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  "Feature Y"
+                ),
+                _react2.default.createElement(
+                  "td",
+                  null,
+                  _react2.default.createElement("i", { "class": "fa fa-check" })
+                )
+              )
             )
+          )
         )
-    );
+      )
+    )
+  );
 };
 
 exports.default = RelatedCard;
@@ -37744,81 +37751,10 @@ exports.default = Star;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactStarRatings = __webpack_require__(21);
-
-var _reactStarRatings2 = _interopRequireDefault(_reactStarRatings);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var OutfitCard = function OutfitCard() {
-
-    return (
-        // This DIV will hold 1 of the Outfit cards.
-        _react2.default.createElement(
-            "div",
-            { className: "card-product" },
-            _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement("span", { className: "far fa-times-circle card-x-top" }),
-                _react2.default.createElement("img", { className: "card-image", src: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Plus_symbol.svg" })
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "card-category" },
-                "Category"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "card-title" },
-                "Product Name"
-            ),
-            _react2.default.createElement(
-                "span",
-                { className: "card-price" },
-                "Price"
-            ),
-            " ",
-            _react2.default.createElement("br", null),
-            _react2.default.createElement("br", null),
-            _react2.default.createElement(
-                "div",
-                { className: "card-star-rating" },
-                _react2.default.createElement(_reactStarRatings2.default, {
-                    rating: 0,
-                    name: "rating",
-                    starDimension: "25px",
-                    starSpacing: "1px",
-                    starRatedColor: "orange",
-                    numberOfStars: 5
-                })
-            )
-        )
-    );
-};
-
-exports.default = OutfitCard;
-
-/***/ }),
-/* 76 */,
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Modal = __webpack_require__(78);
+var _Modal = __webpack_require__(76);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -37828,7 +37764,7 @@ exports.default = _Modal2.default;
 module.exports = exports["default"];
 
 /***/ }),
-/* 78 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37855,7 +37791,7 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _ModalPortal = __webpack_require__(79);
+var _ModalPortal = __webpack_require__(77);
 
 var _ModalPortal2 = _interopRequireDefault(_ModalPortal);
 
@@ -37867,7 +37803,7 @@ var _safeHTMLElement = __webpack_require__(7);
 
 var _safeHTMLElement2 = _interopRequireDefault(_safeHTMLElement);
 
-var _reactLifecyclesCompat = __webpack_require__(86);
+var _reactLifecyclesCompat = __webpack_require__(84);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -38124,7 +38060,7 @@ Modal.defaultStyles = {
 exports.default = Modal;
 
 /***/ }),
-/* 79 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38146,11 +38082,11 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _focusManager = __webpack_require__(80);
+var _focusManager = __webpack_require__(78);
 
 var focusManager = _interopRequireWildcard(_focusManager);
 
-var _scopeTab = __webpack_require__(81);
+var _scopeTab = __webpack_require__(79);
 
 var _scopeTab2 = _interopRequireDefault(_scopeTab);
 
@@ -38158,7 +38094,7 @@ var _ariaAppHider = __webpack_require__(23);
 
 var ariaAppHider = _interopRequireWildcard(_ariaAppHider);
 
-var _classList = __webpack_require__(84);
+var _classList = __webpack_require__(82);
 
 var classList = _interopRequireWildcard(_classList);
 
@@ -38170,7 +38106,7 @@ var _portalOpenInstances = __webpack_require__(24);
 
 var _portalOpenInstances2 = _interopRequireDefault(_portalOpenInstances);
 
-__webpack_require__(85);
+__webpack_require__(83);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -38557,7 +38493,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 80 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38659,7 +38595,7 @@ function teardownScopedFocus() {
 }
 
 /***/ }),
-/* 81 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38754,7 +38690,7 @@ function scopeTab(node, event) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 82 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38824,7 +38760,7 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 83 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -38871,7 +38807,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 84 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38985,7 +38921,7 @@ var remove = exports.remove = function remove(element, classString) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 85 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39051,7 +38987,7 @@ _portalOpenInstances2.default.subscribe(bodyTrap);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 86 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39216,6 +39152,78 @@ function polyfill(Component) {
 
 
 
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactStarRatings = __webpack_require__(21);
+
+var _reactStarRatings2 = _interopRequireDefault(_reactStarRatings);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var OutfitCard = function OutfitCard() {
+  return (
+    // This DIV will hold 1 of the Outfit cards.
+    _react2.default.createElement(
+      "div",
+      { className: "card-product" },
+      _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement("span", { className: "far fa-times-circle card-x-top" }),
+        _react2.default.createElement("img", {
+          className: "card-image",
+          src: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Plus_symbol.svg"
+        })
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "card-category" },
+        "Category"
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "card-title" },
+        "Product Name"
+      ),
+      _react2.default.createElement(
+        "span",
+        { className: "card-price" },
+        "Price"
+      ),
+      " ",
+      _react2.default.createElement("br", null),
+      _react2.default.createElement("br", null),
+      _react2.default.createElement(
+        "div",
+        { className: "card-star-rating" },
+        _react2.default.createElement(_reactStarRatings2.default, {
+          rating: 0,
+          name: "rating",
+          starDimension: "25px",
+          starSpacing: "1px",
+          starRatedColor: "orange",
+          numberOfStars: 5
+        })
+      )
+    )
+  );
+};
+
+exports.default = OutfitCard;
 
 /***/ })
 /******/ ]);

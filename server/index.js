@@ -3,9 +3,10 @@ const morgan = require("morgan");
 const path = require("path");
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3003;
 const axios = require("axios");
 const cors = require("cors");
+const token = "6b62be346efafb380dd1297e6a12cbf825d65953";
 app.use(cors());
 
 app.use(morgan("dev"));
@@ -19,7 +20,7 @@ app.get("/related/api/products/:product_id", async (req, res) => {
       `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${req.params.product_id}/related`,
       {
         headers: {
-          Authorization: process.env.TOKEN,
+          Authorization: token,
         },
         _id: req.params.product_id,
       }
@@ -33,7 +34,7 @@ app.get("/related/api/products/:product_id", async (req, res) => {
             `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${related.data[i]}`,
             {
               headers: {
-                Authorization: process.env.TOKEN,
+                Authorization: token,
               },
             }
           )
@@ -45,7 +46,7 @@ app.get("/related/api/products/:product_id", async (req, res) => {
             `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${related.data[i]}/styles`,
             {
               headers: {
-                Authorization: process.env.TOKEN,
+                Authorization: token,
               },
             }
           )
@@ -71,7 +72,7 @@ app.get("/related/reviews/:product_id", async (req, res) => {
       `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${req.params.product_id}/related`,
       {
         headers: {
-          Authorization: process.env.TOKEN,
+          Authorization: token,
         },
         _id: req.params.product_id,
       }
@@ -85,7 +86,7 @@ app.get("/related/reviews/:product_id", async (req, res) => {
             `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews?product_id=${related.data[i]}`,
             {
               headers: {
-                Authorization: process.env.TOKEN,
+                Authorization: token,
               },
             }
           )

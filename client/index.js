@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Related from './components/Related.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import Related from "./components/Related.jsx";
 
-ReactDOM.render(<Related/>, document.getElementById('related'))
+ReactDOM.render(<Related />, document.getElementById("service2"));
